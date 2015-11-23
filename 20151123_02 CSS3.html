@@ -6,35 +6,39 @@
   <!-- html5.zz.to 에서 자료를 받을 수 있음 (무료도메인 zz.to) -->
 </head>
 <body>
+
+  <div class='br'>br</div>
+  <div class='br2'>br2</div>
+  <div class='br3'>br3</div>
   <style>
     .br { width: 100px; height: 100px; background-color: lightgreen; border-radius: 20px 30px 40px 50px; border: 10px solid black; }
     .br2 { width: 100px; height: 100px; background-color: lightblue;  border-radius: 100%; border: 1px solid black; text-align: center; line-height: 100px; }
     .br3 { width: 100px; height: 100px; background-color: lightorange; border: 3px solid black; outline: 4px solid red; outline-offset: 5px; }
     /* outline 기능은 css2에도 있었으나, 3에 업그레이드됨. 버튼의 엣지에 라인을 넣을때 유용
        outline-offset은 IE에서는 작동하지않는다. */
-  </style>
-  <div class='br'>br</div>
-  <div class='br2'>br2</div>
-  <div class='br3'>br3</div>
+  </style><hr/>
 
 
-  <style>
-    body { padding: 10px; }
-    li { list-style: none; padding: 0; margin: 0; }
-    .btn1 { margin: 40px 0; }
-    .btn1 li { float: left; }
-    .btn1 a { display: block; padding: 0 5px; heigth: 20px; line-height: 20px; border: 1px solid red; font-size: 12px; decoration: none; }
-    .btn1 a:hover { background-color: red; color: #ffffff; }
-    .btn1 li:first-child a { border-radius: 5px 0 0 5px; }
-    .btn1 li:last-child a { border-radius: 0 5px 5px 0; }
-  </style>
+
   <ul class='btn1'>
     <li><a href='#a'>시작</a></li>
     <li><a href='#a'>일시정지</a></li>
     <li><a href='#a'>정지</a></li>
   </ul>
+  <style>
+    body { padding: 10px; }
+    li { list-style: none; padding: 0; margin: 0; }
+    .btn1 { margin: 40px 0; }
+    .btn1 li { float: left; }
+    .btn1 a { display: block; padding: 0 5px; heigth: 20px; line-height: 20px; border: 1px solid red; font-size: 12px; text-decoration: none; }
+    .btn1 a:hover { background-color: red; color: #ffffff; }
+    .btn1 li:first-child a { border-radius: 5px 0 0 5px; }
+    .btn1 li:last-child a { border-radius: 0 5px 5px 0; }
+  </style><hr/>
 
 
+
+  <div class='bgs'></div>
   <style>
     .bgs {
       margin: 100px 0 0 0;
@@ -47,7 +51,107 @@
       background-repeat: no-repeat, repeat-x, repeat-y;
       background-size: 200px auto, 50px auto, 300px 200px;
     }
+  </style><hr/>
+
+
+
+  <div class='bgs2'></div>
+  <style>
+    .bgs2 { 
+      width: 200px; 
+      height: 200px; 
+      border: 1px solid black; 
+      background: url(images/Tulips.jpg) no-repeat; 
+      background-size: 100% 100%; 
+      padding: 30px; 
+      background-clip: content-box;  /* 활용도는 별로없음... */
+    }
+  </style><hr/>
+
+
+  
+  <div class='gradients'></div>
+  <style>
+    /*  그레이디언트 생성기 : http://www.css3factory.com/linear-gradients/  */
+    .gradients {
+      width: 200px; height: 200px; border: 1px solid #000;
+      background-image: linear-gradient(to left bottom, #54FFCF 0%, #0A3D35 78%);
+    }
+  </style><hr/>
+
+
+  
+  <div class="event">
+    <h2><img src="images/tit_event.png"></h2>
+    <p><a href="#a">더보기</a></p>
+    <ul>
+      <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+      <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+      <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+      <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+    </ul>
+  </div>
+  <style>
+    .event { width: 300px; }
+    .event ul { border-top: 1px solid #ccc; }
+    .event li { padding: 0 20px; border-bottom: 1px solid #ccc; }
+    .event a {
+      height: 30px; line-height: 30px; color: #222; text-decoration: none; font-size: 14px;
+      display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .event li:first-child { background: url(images/right_event_icon_3.png) no-repeat 0 2px
+      , url(images/event_plus.gif) no-repeat 245px 10px; }
+    .event li:nth-child(2) {}
+    .event li:nth-child(3) {}
+    .event li:last-child {}
+  </style><hr/>
+
+
+  
+  <div class="eventT">
+    <h2><img src="images/tit_event.png"></h2>
+    <p><a href="#a">더보기</a></p>
+    <ul>
+    <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+    <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+    <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+    <li><a href="#a">우리 아이만들기 세상 '조물'우리 아이만들기 세상 '조물'</a></li>
+    </ul>
+  </div>
+  <style>
+    .eventT { width:300px;}
+    .eventT ul { border-top:1px solid #ccc;}
+    .eventT li { padding:0 30px; border-bottom:1px solid #ccc;}
+    .eventT a {display:block; height:30px; line-height:30px; color:#222; text-decoration:none; font-size:14px;
+    overflow:hidden; text-overflow:ellipsis; white-space: nowrap; 
+    }
+    .eventT li:nth-child(1) { background:url(images/right_event_icon_3.png) no-repeat 0 2px, url(images/event_plus.gif) no-repeat 245px 10px;}
+    .eventT li:nth-child(2) { background:url(images/right_event_icon_5.png) no-repeat 0 2px, url(images/event_plus.gif) no-repeat 245px 10px;}
+    .eventT li:nth-child(3) { background:url(images/right_event_icon_6.png) no-repeat 0 2px, url(images/event_plus.gif) no-repeat 245px 10px;}
+    .eventT li:nth-child(4) { background:url(images/right_event_icon_7.png) no-repeat 0 2px, url(images/event_plus.gif) no-repeat 245px 10px;}
+  </style><hr/>
+
+
+
+  <a href='#a' class='btn'>Show modal default</a>
+  <style>
+    .btn { margin-top: 50px; }
+    .btn { display: inline-block; width: 500px; height: 35px; text-align: center; line-height: 35px;
+      border: 1px solid #81db58; border-radius: 5px; text-decoration: none; color: #fff;
+      background-image: linear-gradient(to left bottom, #0D8707 29%, #AFFF8F 58%);
+    }
+    .btn:hover {
+      background-image: linear-gradient(to left bottom, #073A78 41%, #8982F0 58%);
+    }
+  </style><hr/>
+
+  
+  <style>
+  .btnT { margin-top:50px;}
+  .btnT { display:inline-block; width:500px; height:35px; border:1px solid #81DB58; border-radius:5px; text-align:center; line-height:35px; text-decoration:none; color:#fff;
+  background-image: linear-gradient(to top, #266308 0%, #59D61A 99%, #FFFFFF 99%, #FFFFFF 100%);
   </style>
-  <div class='bgs'></div>
+  <a href="#a" class="btnT">Show modal default by Teacher</a><hr/>
+
 </body>
 </html>
