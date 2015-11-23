@@ -2,11 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="Generator" content="EditPlus®">
-  <meta name="Author" content="">
-  <meta name="Keywords" content="">
-  <meta name="Description" content="">
-  <title>Document</title>
+  <title>HTML5</title>
 </head>
 <body>
 
@@ -24,17 +20,18 @@
 
 <form action='javascript:'>
   <ul>
-    <li><input type='color' /></li>
-    <li><input type='date' /></li>
-    <li><input type='datetime-local' /></li>
-    <li><input type='month' /></li>
-    <li><input type='week' /></li>
-    <li><input type='email' /></li>  <!--모바일에서 @ 이 들어간 키보드가 나오도록 함-->
-    <li><input type='number' /></li>  <!--모바일에서 qwerty키보드에 숫자까지 나오도록 함-->
+    <li><input type='color' /></li>  <!--아무짝에도 쓸모없다-->
+    <li><input type='date' /></li>  <!--모바일에서 쓸만하다. 년,월,일을 고를수있다.-->
+    <li><input type='datetime-local' /></li>  <!--모바일에서 쓸만하다. 년,월,일,시,분 을 고를수있다.-->
+    <li><input type='month' /></li>  <!--모바일에서 쓸만하다. 년, 월을 고를수있다.-->
+    <li><input type='week' /></li>  <!--아무짝에도 쓸모없다-->
+    <li><input type='email' /></li>  <!--모바일에서 "@"과 ".com" 이 들어간 키보드가 나오도록 함-->
+    <li><input type='number' /></li>  <!--안드로이드: 1234567890. 외에 어떤것도 입력할수 없게됨.
+                                          아이폰: 모바일에서 qwerty키보드에 숫자까지 나오도록 함-->
     <li><input type='range' /></li>
     <li><input type='search' /></li>  <!--모바일에서 키보드에 돋보기가 나오도록 해줌-->
     <li><input type='tel' /></li>  <!--모바일에서 전화번호 키패드가 뜸-->
-    <li><input type='url' /></li>  <!--모바일에서 .com 이 들어간 키보드가 나오도록 함-->
+    <li><input type='url' /></li>  <!--모바일에서 "/"와 ".com" 이 들어간 키보드가 나오도록 함-->
   </ul>
   <button>전송</button>
 </form>

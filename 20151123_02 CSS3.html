@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS3</title>
+  <!-- html5.zz.to 에서 자료를 받을 수 있음 (무료도메인 zz.to) -->
+</head>
+<body>
+  <style>
+    .br { width: 100px; height: 100px; background-color: lightgreen; border-radius: 20px 30px 40px 50px; border: 10px solid black; }
+    .br2 { width: 100px; height: 100px; background-color: lightblue;  border-radius: 100%; border: 1px solid black; text-align: center; line-height: 100px; }
+    .br3 { width: 100px; height: 100px; background-color: lightorange; border: 3px solid black; outline: 4px solid red; outline-offset: 5px; }
+    /* outline 기능은 css2에도 있었으나, 3에 업그레이드됨. 버튼의 엣지에 라인을 넣을때 유용
+       outline-offset은 IE에서는 작동하지않는다. */
+  </style>
+  <div class='br'>br</div>
+  <div class='br2'>br2</div>
+  <div class='br3'>br3</div>
+
+
+  <style>
+    body { padding: 10px; }
+    li { list-style: none; padding: 0; margin: 0; }
+    .btn1 { margin: 40px 0; }
+    .btn1 li { float: left; }
+    .btn1 a { display: block; padding: 0 5px; heigth: 20px; line-height: 20px; border: 1px solid red; font-size: 12px; decoration: none; }
+    .btn1 a:hover { background-color: red; color: #ffffff; }
+    .btn1 li:first-child a { border-radius: 5px 0 0 5px; }
+    .btn1 li:last-child a { border-radius: 0 5px 5px 0; }
+  </style>
+  <ul class='btn1'>
+    <li><a href='#a'>시작</a></li>
+    <li><a href='#a'>일시정지</a></li>
+    <li><a href='#a'>정지</a></li>
+  </ul>
+
+
+  <style>
+    .bgs {
+      margin: 100px 0 0 0;
+      width: 500px; 
+      height: 500px; 
+      border: 5px solid orange; 
+      background: url(images/Tulips.jpg) 10px 10px
+        , url(images/Penguins.jpg) right top
+        , url(images/Lighthouse.jpg) right bottom;
+      background-repeat: no-repeat, repeat-x, repeat-y;
+      background-size: 200px auto, 50px auto, 300px 200px;
+    }
+  </style>
+  <div class='bgs'></div>
+</body>
+</html>
