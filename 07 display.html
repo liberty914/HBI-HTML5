@@ -98,12 +98,14 @@
     thead { display: none; }
     td { display: list-item; list-style: none; text-align: center; }
     td:first-child,
-    td:last-child {display: table-cell;}
+    td:last-child { display: table-cell; }
     td:first-child:before { content: "구분"; }
     td:nth-child(2):before { content: "회사명 : "; }
     td:nth-child(3):before { content: "이름 : "; }
     td:nth-child(4):before { content: "사는곳 : "; }
     td:nth-child(5):before { content: "기타 : "; }
+    td:last-child:before { content: ""; }
+    input[type='checkbox']:checked td:after { content: "v"; }
   }
   </style>
 
