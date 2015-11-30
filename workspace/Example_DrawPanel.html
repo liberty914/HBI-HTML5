@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example_DrawPanel</title>
+</head>
+<body>
+	<button id='clearBtn'>지우기</button>
+	<input type='color' id='color' />
+	<input type='range' id='range' min='1' max='20' step='1' value='5' />
+	<canvas id='myCanvas' width='600' height='600'></canvas>
+</body>
+</html>
+
+<style>
+canvas { border: 1px solid red; }
+</style>
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');  //canvas에 렌더링 할수있는 context 얻기
+
+//onmousedown ==> beginPath(), moveTo()
+//onmousemove ==> lineTo(), stroke()
+//onmouseup   ==> closePath()
+
+var isDraw = false;  //현재 그리는 준비가 되어있는지를 체크해줌
+
+var thisColor = '#000000'; 
+$('#color').change(function() {
+	thisColor = $('#color').val();  //선택한 색상을 읽어오고, 변수에 대입!
+});
+
+var thisWidth = 5;
+$('#range').change(function() {
+	thisWidth = $(this).val();
+});
+
+
+$('#')
+
+$('canvas').mousedown(function(event) {
+	isDraw = true;
+	context.beginPath();
+	context.strokeStyle = thisColor;  //색깔 대입
+	context.lineWidth = thisWidth;  //굵기 대입
+	context.lineCap = 'round';
+	context.lineJoin = 'round';
+	context.moveTo(event.offsetX, event.offsetY);  //이벤트가 일어난 마우스좌표
+});
+
+$('canvas').mousemove(function(event) {
+	if (isDraw) {  //true일 때만 그리기!
+		context.lineTo(event.offsetX, event.offsetY);  //그냥 움직여진다!
+		context.stroke();
+	}
+});
+
+$('canvas').mouseup(function(event) {
+	context.closePath();
+	isDraw = false;
+});
+
+$('#clearBtn').click(function() {
+	context.clearRect(0, 0, 600, 600);
+});
+
+
+//canvas.toDataURL() 을 콘솔창에서 치면 BASE64 인코딩된 데이터를 얻을 수 있다.
+
+</script>
