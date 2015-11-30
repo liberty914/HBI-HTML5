@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step01_Canvas2</title>
+</head>
+<body>
+	<canvas id='myCanvas' width='500' height='500'></canvas>
+</body>
+</html>
+
+<style>
+canvas { border: 1px solid red; }
+</style>
+
+<script>
+var canvas = document.getElementById('myCanvas');  //canvas의 참조값 얻어오기
+var context = canvas.getContext('2d');  //그림을 그리는 도구 ==> context
+
+context.strokeStyle = '#0000ff';
+context.lineWidth = 10;  //순서가 무척 중요하다!
+context.strokeRect(200, 200, 150, 150);  //테두리만 있는 사각형을 그린다.
+//붓의 크기를 변경하고 그려야 적용되지, 그리고 붓의 크기를 변경하면 의미없다!
+
+context.globalAlpha = 0.5;  //투명도 (opacity 와 단위가 똑같음)
+//이후 그리는 모든 작품들의 투명도를 조정
+
+context.fillStyle = '#ff00ff';  //채울 색상 지정
+context.fillRect(300, 300, 100, 100);  //x,y좌표가 300,300이면서 100,100의 크기
+//     .fillRect(x, y, width, height);
+</script>

@@ -1,4 +1,6 @@
 ﻿Sublime Text 3084 x64 설치
+(1) 글자조정 (ctrl+, ctrl-)
+(2) 테마조정 (effel 추천, 기본 monokai)
 
 1. 구글에 package control 검색
 https://packagecontrol.io/
@@ -8,7 +10,7 @@ https://packagecontrol.io/
 
 2. (ctrl + shift + p) 누르고 "pci"
  (1) IME Support  --> 한글을 편하게 쓰도록 해주는 플러그인
- (2) Emmet  --> Zen Coding 이 가능하도록 해주는 플러그인 (http://docs.emmet.io/cheat-sheet/)
+ (2) Emmet  --> Zen Coding과 자동완성이 가능하도록 해주는 플러그인 (http://docs.emmet.io/cheat-sheet/)
 
 div#myId.a.b.c>ul*5>li{div$}*5>div.aaa*2 탭
 lorem 탭
@@ -17,7 +19,20 @@ lorem 탭
 
 
 
+================================================
 
+<canvas>
+==> 요즘에는 플래시를 쓰지않는다.
+플래시를 대체할수 있는 엘리먼트!
+
+moveTo
+lineTo
+stroke
+
+
+strokeRect
+fillRect
+fillStyle
 
 
 

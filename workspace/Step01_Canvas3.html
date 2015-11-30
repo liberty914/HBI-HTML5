@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step01_Canvas2</title>
+</head>
+<body>
+	<canvas id='myCanvas' width='500' height='500'></canvas>
+</body>
+</html>
+
+<style>
+canvas { border: 1px solid red; }
+</style>
+
+<script>
+var canvas = document.getElementById('myCanvas');  //canvas의 참조값 얻어오기
+var context = canvas.getContext('2d');  //그림을 그리는 도구 ==> context
+
+context.strokeStyle = '#00ff00';
+context.lineWidth = 10;
+context.lineCap = 'round';
+
+context.beginPath();  //경로 시작
+var startAngle = 0 * (Math.PI / 180);  //[라디안] 원 그릴때 시작각도 (3시 디폴트)
+var endAngle = 270 * (Math.PI / 180);  //[rad] 끝 각도
+context.arc(250, 250, 100, startAngle, endAngle, false);  //기본 false
+//.arc(x, y, 반지름, 시작각도, 끝각도, 컴퍼스를 반시계방향으로 돌릴지 여부)
+context.stroke();  //외곽선 그리기
+context.closePath();  //경로 마지막
+
+
+context.fillStyle = '#ff00ff';
+context.beginPath();
+context.arc(400, 400, 100, startAngle, endAngle, false);
+context.fill();
+context.closePath();
+
+
+context.font = '50px sans-serif';
+context.strokeStyle = '#0000ff';
+context.lineWidth = 2;
+context.strokeText('ABCD', 10, 60);
+context.fillStyle = '#00ffff';
+context.fillText('EFGH', 10, 110);
+// .strokeText('글자', x, y)  * 글자의 좌하단 좌표를 잡는다.
+</script>
