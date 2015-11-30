@@ -1,0 +1,58 @@
+﻿Sublime Text 3084 x64 설치
+
+1. 구글에 package control 검색
+https://packagecontrol.io/
+
+"install now" -> SUBLIME TEXT 3 의 문자열을 복사
+서브라임에서 View - Show Console  (ctrl + `) -> 붙여넣기!
+
+2. (ctrl + shift + p) 누르고 "pci"
+ (1) IME Support  --> 한글을 편하게 쓰도록 해주는 플러그인
+ (2) Emmet  --> Zen Coding 이 가능하도록 해주는 플러그인 (http://docs.emmet.io/cheat-sheet/)
+
+div#myId.a.b.c>ul*5>li{div$}*5>div.aaa*2 탭
+lorem 탭
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
