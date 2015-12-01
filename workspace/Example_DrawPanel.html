@@ -8,7 +8,11 @@
 	<button id='clearBtn'>지우기</button>
 	<input type='color' id='color' />
 	<input type='range' id='range' min='1' max='20' step='1' value='5' />
-	<canvas id='myCanvas' width='600' height='600'></canvas>
+	<button id='toImage'>이미지로 만들기</button>
+	<br/>
+	<canvas id='myCanvas' width='300' height='300'></canvas>
+	<br/>
+	<img id='myImage' />
 </body>
 </html>
 
@@ -38,7 +42,11 @@ $('#range').change(function() {
 });
 
 
-$('#')
+$('#toImage').click(function() {
+	//canvas에 현재 그려진 이미지를 data url 문자열 형식으로 얻어낸다.
+	var base64 = canvas.toDataURL();
+	$('#myImage').attr('src', base64);
+});
 
 $('canvas').mousedown(function(event) {
 	isDraw = true;

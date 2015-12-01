@@ -154,34 +154,18 @@
 			"buffers":
 			[
 				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas.html",
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage.html",
 					"settings":
 					{
-						"buffer_size": 1044,
+						"buffer_size": 1135,
 						"line_ending": "Windows"
 					}
 				},
 				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Example_DrawPanel.html",
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage2.html",
 					"settings":
 					{
-						"buffer_size": 1602,
-						"line_ending": "Windows"
-					}
-				},
-				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas2.html",
-					"settings":
-					{
-						"buffer_size": 805,
-						"line_ending": "Windows"
-					}
-				},
-				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas3.html",
-					"settings":
-					{
-						"buffer_size": 1193,
+						"buffer_size": 1646,
 						"line_ending": "Windows"
 					}
 				}
@@ -223,16 +207,21 @@
 			},
 			"expanded_folders":
 			[
-				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace"
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/js"
 			],
 			"file_history":
 			[
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Example_DrawPanel.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas3.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas2.html",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Hello.html",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Test.html"
 			],
 			"find":
 			{
-				"height": 0.0
+				"height": 36.0
 			},
 			"find_in_files":
 			{
@@ -246,6 +235,12 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"saveMsg",
+					"saveBtn",
+					"localStorage",
+					"local",
+					"localStorag",
+					"localStorage"
 				],
 				"highlight": true,
 				"in_selection": false,
@@ -253,6 +248,8 @@
 				"regex": false,
 				"replace_history":
 				[
+					"savedMsg",
+					"savedBtn"
 				],
 				"reverse": false,
 				"show_context": true,
@@ -274,19 +271,19 @@
 					[
 						{
 							"buffer": 0,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas.html",
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage.html",
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 1044,
+								"buffer_size": 1135,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										1034,
-										1034
+										176,
+										176
 									]
 								],
 								"settings":
@@ -294,7 +291,7 @@
 									"syntax": "Packages/HTML/HTML.tmLanguage"
 								},
 								"translation.x": 0.0,
-								"translation.y": 180.0,
+								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 1,
@@ -302,19 +299,19 @@
 						},
 						{
 							"buffer": 1,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Example_DrawPanel.html",
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage2.html",
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 1602,
+								"buffer_size": 1646,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										1456,
-										1456
+										1102,
+										1102
 									]
 								],
 								"settings":
@@ -322,66 +319,10 @@
 									"syntax": "Packages/HTML/HTML.tmLanguage"
 								},
 								"translation.x": 0.0,
-								"translation.y": 900.0,
+								"translation.y": 480.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 0,
-							"type": "text"
-						},
-						{
-							"buffer": 2,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas2.html",
-							"semi_transient": false,
-							"settings":
-							{
-								"buffer_size": 805,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										0,
-										805
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/HTML/HTML.tmLanguage"
-								},
-								"translation.x": 0.0,
-								"translation.y": 180.0,
-								"zoom_level": 1.0
-							},
-							"stack_index": 3,
-							"type": "text"
-						},
-						{
-							"buffer": 3,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas3.html",
-							"semi_transient": false,
-							"settings":
-							{
-								"buffer_size": 1193,
-								"regions":
-								{
-								},
-								"selection":
-								[
-									[
-										795,
-										795
-									]
-								],
-								"settings":
-								{
-									"syntax": "Packages/HTML/HTML.tmLanguage"
-								},
-								"translation.x": 0.0,
-								"translation.y": 180.0,
-								"zoom_level": 1.0
-							},
-							"stack_index": 2,
 							"type": "text"
 						}
 					]
@@ -389,7 +330,7 @@
 			],
 			"incremental_find":
 			{
-				"height": 36.0
+				"height": 28.0
 			},
 			"input":
 			{
@@ -423,11 +364,11 @@
 				"height": 0.0
 			},
 			"pinned_build_system": "",
-			"position": "0,0,1,-1,-1,-1,-1,868,253,0,1294",
+			"position": "0,0,1,-1,-1,-1,-1,868,226,0,1341",
 			"project": "",
 			"replace":
 			{
-				"height": 0.0
+				"height": 66.0
 			},
 			"save_all_on_build": true,
 			"select_file":

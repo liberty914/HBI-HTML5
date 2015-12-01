@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LocalStorage</title>
+</head>
+<body>
+	<input type='text' id='inputMsg' />
+	<button id='savedBtn'>savedMsg저장</button>
+	<button id='loadBtn'>불러오기</button>
+	<button id='deleteBtn'>localStorage 삭제</button>
+	<button id='clearBtn'>localStorage 초기화</button>
+	<p id='console'></p>
+</body>
+</html>
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+$('#savedBtn').click(function() {
+	var msg = $('#inputMsg').val();  //입력한 문자열을 읽어오기
+	localStorage.savedMsg = msg;  //localStorage 에 저장
+	/* localStorage 는 브라우저에서 제공해주는 내장객체임!
+	   데이터는 Storage객체의 key: "value" 의 형태의 Object로 저장됨.
+	   예) Storage {savedMsg: "abc"} */
+
+	localStorage.myName = 'Rex';
+	//localStorage 도 결국 Object이기 때문에 . 찍고 그냥 쓰면 속성이 만들어진다.
+	$('#console').append('저장하였습니다.<br/>');
+});
+
+$('#loadBtn').click(function() {
+	var msg = '';
+	for (index in localStorage) {
+		msg += index+': '+localStorage[index]+'<br/>';
+	}
+	$('#console').append(msg+'<br/>');
+});
+
+$('#deleteBtn').click(function() {
+	delete localStorage.savedMsg;
+});
+
+$('#clearBtn').click(function() {
+	localStorage.clear();  //로컬스토리지 초기화.
+});
+</script>

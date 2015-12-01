@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LocalStorage 2</title>
+</head>
+<body>
+	<form action='loginAction'>
+		<label>아이디 <input type='text' name='id' id='id' /></label><br/>
+		<label>비밀번호 <input type='password' name='pwd' id='pwd' /></label><br/>
+		<br/>
+		<label><input type='checkbox' id='saveId' /> 아이디 저장</label><br/>
+		<label><input type='checkbox' id='savePwd' /> 비밀번호 저장</label><br/>
+		<label><input type='checkbox' id='autoLogin' /> 자동로그인</label><br/>
+		<br/>
+		<button type='submit'>로그인</button>
+	</form>
+</body>
+</html>
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+window.addEventListener('load', function() {
+	if (localStorage.userId) {
+		document.getElementById('id').value = localStorage.userId;
+		document.getElementById('saveId').checked = true;
+	}
+	if (localStorage.userPassword) {
+		document.getElementById('pwd').value = localStorage.userPassword;
+		document.getElementById('savePwd').checked = true;
+	}
+	if (localStorage.isAutoLogin) {
+		document.getElementById('autoLogin').checked = true;
+		console.log('자동로그인');
+		$('form').submit();
+	}
+});
+
+$('form').submit(function() {
+	if ($('#saveId').prop('checked')) {  //체크하면  로컬저장소에 등록
+		localStorage.userId = $('#id').val();
+	} else {  //체크 안했을 경우 지워버림
+		delete localStorage.userId;
+	}
+	if ($('#savePwd').prop('checked')) {
+		localStorage.userPassword = $('#pwd').val();
+	} else {
+		delete localStorage.userPassword;
+	}
+	if ($('#autoLogin').prop('checked')) {
+		localStorage.isAutoLogin = true;  //로컬스토리지에는 boolean값이 저장되지 않는다
+	} else {
+		localStorage.isAutoLogin = '';  //문자열로 저장된다.
+	}
+	console.log(localStorage);
+	return false;
+});
+</script>
