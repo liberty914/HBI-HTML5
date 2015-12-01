@@ -154,18 +154,34 @@
 			"buffers":
 			[
 				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage.html",
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step03_audio.html",
 					"settings":
 					{
-						"buffer_size": 1135,
+						"buffer_size": 979,
 						"line_ending": "Windows"
 					}
 				},
 				{
-					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage2.html",
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step04_3dTransform.html",
 					"settings":
 					{
-						"buffer_size": 1646,
+						"buffer_size": 1462,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step04_CardFlip.html",
+					"settings":
+					{
+						"buffer_size": 1699,
+						"line_ending": "Windows"
+					}
+				},
+				{
+					"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step05_Cube.html",
+					"settings":
+					{
+						"buffer_size": 2458,
 						"line_ending": "Windows"
 					}
 				}
@@ -212,8 +228,12 @@
 			],
 			"file_history":
 			[
-				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/sublime_3083_x64/Data/Packages/User/Preferences.sublime-settings",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/sublime_3083_x64/Data/Packages/Default/Preferences.sublime-settings",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Example_DrawPanel.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage2.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage.html",
+				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas.html",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas3.html",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step01_Canvas2.html",
 				"/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Hello.html",
@@ -235,6 +255,9 @@
 				"case_sensitive": false,
 				"find_history":
 				[
+					"tag",
+					"complete",
+					"auto",
 					"saveMsg",
 					"saveBtn",
 					"localStorage",
@@ -266,24 +289,52 @@
 			"groups":
 			[
 				{
-					"selected": 1,
+					"selected": 3,
 					"sheets":
 					[
 						{
 							"buffer": 0,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage.html",
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step03_audio.html",
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 1135,
+								"buffer_size": 979,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										176,
-										176
+										735,
+										735
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/HTML/HTML.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 300.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step04_3dTransform.html",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1462,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										475,
+										475
 									]
 								],
 								"settings":
@@ -294,24 +345,24 @@
 								"translation.y": 0.0,
 								"zoom_level": 1.0
 							},
-							"stack_index": 1,
+							"stack_index": 2,
 							"type": "text"
 						},
 						{
-							"buffer": 1,
-							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step02_LocalStorage2.html",
+							"buffer": 2,
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step04_CardFlip.html",
 							"semi_transient": false,
 							"settings":
 							{
-								"buffer_size": 1646,
+								"buffer_size": 1699,
 								"regions":
 								{
 								},
 								"selection":
 								[
 									[
-										1102,
-										1102
+										1237,
+										1237
 									]
 								],
 								"settings":
@@ -319,7 +370,35 @@
 									"syntax": "Packages/HTML/HTML.tmLanguage"
 								},
 								"translation.x": 0.0,
-								"translation.y": 480.0,
+								"translation.y": 900.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/C/Users/user/Desktop/Rex/HBI-HTML5/workspace/Step05_Cube.html",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 2458,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1954,
+										1954
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/HTML/HTML.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 1260.0,
 								"zoom_level": 1.0
 							},
 							"stack_index": 0,
@@ -368,7 +447,7 @@
 			"project": "",
 			"replace":
 			{
-				"height": 66.0
+				"height": 52.0
 			},
 			"save_all_on_build": true,
 			"select_file":

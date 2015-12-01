@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step04_CardFlip.html</title>
+	<style>
+	.wrapper{
+		border: 1px solid red;
+		-webkit-perspective:1000px;
+		-webkit-perspective-origin: 50% 50%;
+		width: 200px;
+		height: 200px;
+	}
+	.target{
+		margin: 0 auto;
+		width: 200px;
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform-origin: 50% 50%;
+		-webkit-transition: all 0.4s ease-out;
+	}
+
+	.target div{
+		position: absolute;
+		top: 0;
+		left: 0;  /* 두개의 div를 겹치는 효과 */
+		width: 200px;
+		/* ★★★ 뒤집었을때 뒷면이 보이지 않도록 */
+		-webkit-backface-visibility: hidden;
+	}
+
+	.target div img{
+		max-width: 100%;
+	}
+
+	/* html이 로딩될때 .back 인 div 180 뒤집어 놓기*/
+	.target div.back{
+		-webkit-transform: rotateY(180deg);
+	}
+
+	/*.target 에 마우스가 hover 되었을때 적용할 css */
+	.target:hover{
+		-webkit-transform: rotateY(180deg);
+	}
+
+	.rotation{  /* 동적으로 추가&제거할 클래스 */
+		-webkit-transform: rotateY(180deg);
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="target">
+			<div class="front">
+				<img src="images/image1.png"/>
+			</div>
+			<div class="back">
+				<img src="images/image2.png"/>
+			</div>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="target" id="one">
+			<div class="front">
+				<img src="images/image3.png"/>
+			</div>
+			<div class="back">
+				<img src="images/image4.png"/>
+			</div>
+		</div>
+	</div>
+	<button id="flipBtn">눌러보셈</button>
+	<script src="js/jquery-2.1.4.js"></script>
+	<script>
+	$("#flipBtn").click(function(){
+		$("#one").toggleClass("rotation");
+	});
+	//클래스속성을 동적으로 추가&제거 함.
+	</script>
+</body>
+</html>
+
+
+<!--  << 카드 뒤집기 >>
+1. div 를 2개 생성, 이미지로 출력함
+2. absolute 로 겹침
+3. div 한장을 뒤집음 (y축 기준으로 하는게 가독성좋다)
+4. 걔네를 div로 또 감싸서 하나로 만든다.
+5. 그 부모 div를 180도 돌린다.
+-->

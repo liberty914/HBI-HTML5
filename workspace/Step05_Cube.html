@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step05_Cube.html</title>
+	<style>
+	.wrapper{
+		margin-top: 100px;
+		-webkit-perspective:1000px;
+		-webkit-perspective-origin: 50% 50%;
+		border: 1px solid red;
+	}
+	.cube{
+		position: relative;
+		margin:0 auto;
+		width: 400px;
+		height: 400px;
+		-webkit-transform-style: preserve-3d;
+		-webkit-transform: translateZ(-200px);
+		-webkit-transition: all 0.4s ease-out;
+	}
+	.cube div{
+		position: absolute;
+		width:400px;
+		height: 400px;
+		opacity: 0.6;
+		background-position: center center;
+	}
+	.cube > div:nth-child(1){
+		background-color: #2e272f;
+		background-image: url('images/image1.png');
+		background-repeat: no-repeat;
+		-webkit-transform: translateZ(200px);
+	}
+	.cube > div:nth-child(2){
+		background-color: #2e272f;
+		background-image: url('images/image2.png');
+		background-repeat: no-repeat;
+		-webkit-transform: rotateY(90deg) translateZ(200px);
+	}
+	.cube > div:nth-child(3){
+		background-color: #2e272f;
+		background-image: url('images/image3.png');
+		background-repeat: no-repeat;
+		-webkit-transform: rotateY(180deg) translateZ(200px);
+	}
+	.cube > div:nth-child(4){
+		background-color: #2e272f;
+		background-image: url('images/image4.png');
+		background-repeat: no-repeat;
+		-webkit-transform: rotateY(270deg) translateZ(200px);
+	}
+	.cube > div:nth-child(5){
+		background-color: #2e272f;
+		background-image: url('images/image5.png');
+		background-repeat: no-repeat;
+		-webkit-transform: rotateX(90deg) translateZ(200px);
+	}
+	.cube > div:nth-child(6){
+		background-color: #2e272f;
+		background-image: url('images/image6.png');
+		background-repeat: no-repeat;
+		-webkit-transform: rotateX(-90deg) translateZ(200px);
+	}
+	/*
+	.cube:hover{
+		-webkit-transform: translateZ(-200px) rotateX(90deg) rotateY(90deg);
+	}
+	*/
+	.cube:hover{
+		-webkit-animation: rotateAni 2s infinite linear; /*alternate*/
+	}
+	
+	/* 키프레임 애니메이션 정의하기 (변수에 담는다고 생각하면 됨) */
+	@-webkit-keyframes rotateAni{
+		0%{
+			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(0deg);
+		}
+		50%{
+			-webkit-transform: translateZ(-200px) rotateX(360deg) rotateY(360deg);
+		}
+		100%{
+			-webkit-transform: translateZ(-200px) rotateX(720deg) rotateY(720deg);
+		}
+	}
+
+	</style>
+</head>
+<body>
+<!-- 3d 컨텐츠를 만들 컨테이너  -->	
+<div class="wrapper">
+	<!-- 6 면체 cube 의 6개 div 를 담을 컨테이너 -->
+	<div class="cube">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
+</div>	
+</body>
+</html>

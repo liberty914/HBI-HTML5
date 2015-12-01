@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio</title>
+</head>
+<body>
+	<audio src='sounds/mp3piano.mp3' controls>  <!--autoplay-->
+		Audio API를 지원하지 않습니다.
+	</audio>
+	<button id='fireBtn'>총소리</button>
+	<button id='screamSound'>비명소리</button>
+	<button id='kill'>kill</button>
+</body>
+</html>
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+// * Audio API  (http://www.w3schools.com/tags/ref_av_dom.asp)
+
+var sound1 = new Audio('sounds/mp3piano.mp3');
+$('#fireBtn').click(function() {
+	for(var i=10; i>0; i--) {
+		new Audio('sounds/fire.wav').play();
+		new Audio('sounds/fire.wav').play();
+		new Audio('sounds/fire.wav').play();
+		console.log(i);
+	}  //여러개를 동시에하면 위상의 '역상' 현상이 발생되어 잠시 mute현상이 일어난다.
+});
+
+$('#screamSound').click(function() {
+	new Audio('sounds/birddie.mp3').play();
+});
+
+$('#kill').click(function() {
+	new Audio('sounds/fire.wav').play();
+	new Audio('sounds/birddie.mp3').play();
+	new Audio('sounds/fire.wav').play();
+});
+</script>

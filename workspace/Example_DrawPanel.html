@@ -9,10 +9,13 @@
 	<input type='color' id='color' />
 	<input type='range' id='range' min='1' max='20' step='1' value='5' />
 	<button id='toImage'>이미지로 만들기</button>
+	<button id='saveBtn'>localStorage 에 저장</button>
+	<button id='loadBtn'>저장된 이미지 불러오기</button>
 	<br/>
 	<canvas id='myCanvas' width='300' height='300'></canvas>
 	<br/>
 	<img id='myImage' />
+	<img id='savedImage' />
 </body>
 </html>
 
@@ -43,6 +46,7 @@ $('#range').change(function() {
 
 
 $('#toImage').click(function() {
+	//canvas.toDataURL() 을 콘솔창에서 치면 BASE64 인코딩된 데이터를 얻을 수 있다.
 	//canvas에 현재 그려진 이미지를 data url 문자열 형식으로 얻어낸다.
 	var base64 = canvas.toDataURL();
 	$('#myImage').attr('src', base64);
@@ -74,7 +78,19 @@ $('#clearBtn').click(function() {
 	context.clearRect(0, 0, 600, 600);
 });
 
+$('#saveBtn').click(function() {
+	localStorage.base64 = canvas.toDataURL();
+	alert('저장되었습니다.');
+});
 
-//canvas.toDataURL() 을 콘솔창에서 치면 BASE64 인코딩된 데이터를 얻을 수 있다.
+$('#loadBtn').click(function() {
+	//$('#savedImage').prop('src', localStorage.base64);  //prop해도되고 attr해도되고...
+	//var img = new Image();  //이미지객체 생성 (방법1)
+	var img = document.createElement('img');  //(방법2)
+	img.src = localStorage.base64;
+	//canvas에 이미지 출력하기
+	context.drawImage(img, 0, 0, 300, 300);
+	//context.drawImage(출력할이미지, x, y, 폭, 높이);
+});
 
 </script>

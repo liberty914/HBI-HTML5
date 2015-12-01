@@ -1,4 +1,4 @@
-﻿
+﻿http://study.kimgura.net/
 
 Sublime Text 3084 x64 설치
 (1) 글자조정 (ctrl+, ctrl-)
@@ -16,8 +16,6 @@ https://packagecontrol.io/
 
 div#myId.a.b.c>ul*5>li{div$}*5>div.aaa*2 탭
 lorem 탭
-
-
 
 
 
@@ -43,11 +41,9 @@ jQuery-2.1.4.js
 
 
 
-
-
 ==========================================
 
-★ 로컬 스토리지 (내장객체)
+★ localStorage (로컬스토리지, 내장객체)
 ==> 문자열 영구저장, 클라이언트사이드에!
 URL에 고유공간이 생성됨!
 
@@ -60,13 +56,24 @@ URL마다 다른공간, 고유한 공간에 저장되기때문에,
 
 
 
+=========================================
+
+3d transform
+
+https://desandro.github.io/3dtransforms/docs/cube.html
 
 
 
 
+=================================
 
+<< 카드 뒤집기 >>
 
-
+1. div 를 2개 생성, 이미지로 출력함
+2. absolute 로 겹침
+3. div 한장을 뒤집음 (y축 기준으로 하는게 가독성좋다)
+4. 걔네를 div로 또 감싸서 하나로 만든다.
+5. 그 부모 div를 180도 돌린다.
 
 
 

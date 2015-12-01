@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Step04_3dTransform.html</title>
+	<style>
+	.wrapper{
+		border: 1px solid red;
+		/* 원근(내 눈과 사물)의 깊이 설정 (정상위치로부터 내 시선까지의 거리)
+		   그래서 가까울수록 왜곡이 심하게 일어난다. */
+		-webkit-perspective: 1000px;
+		/* 시선(내 눈)의 위치 설정 (50% 50%는 정가운데 / 0% 0%는 좌상단끝)
+		   박스 내부를 바라보는 위치*/
+		-webkit-perspective-origin: 50% 50%;  /* x y 눈의 위치를 설정 */
+	}
+	.target{
+		margin: 0 auto;
+		width: 200px;
+		/* 3d transform 을 하겠다고 선언, preserve-3d 는 앞으로 transform할것이 3d효과를 낼것이라는 것. */
+		-webkit-transform-style: preserve-3d;
+		/* x축 y축 z축이 만나는 점의 위치, 3차원 0,0,0가 되는지점, 눈의위치와 같음 */
+		-webkit-transform-origin: 0% 0%;
+		/* transition은 '전환과정' 을 보여주는것! 0.4초동안, ease-out효과로 보여줘라! */
+		-webkit-transition: all 0.4s ease-in-out;
+		/* ease-in 부드럽게 출발, 점점빠르게
+		  ease-out 빠르게 출발, 점점부드럽게
+		  ease-in-out 부드럽게 출발하고, 빨랐다가, 부드럽게 종료
+		  linear 일정하게 */
+	}
+	.target img{
+		max-width: 100%;
+		border: 1px solid blue;
+	}
+	#one:hover{
+		transform: rotateX(45deg);  /* 현재는 -webkit- 을 붙여주지 않아도 됨. */
+	}
+	#two:hover{
+		transform: rotateY(45deg);
+	}
+	#three:hover{
+		transform: rotateZ(45deg);
+	}
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="target" id="one">
+			<img src="images/image1.png"/>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="target" id="two">
+			<img src="images/image2.png"/>
+		</div>
+	</div>
+	<div class="wrapper">
+		<div class="target" id="three">
+			<img src="images/image3.png"/>
+		</div>
+	</div>
+</body>
+</html>
