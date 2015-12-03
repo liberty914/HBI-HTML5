@@ -36,18 +36,39 @@ var rabbitImgs = [rabbitImg, rabbitImg2],  //이미지 객체를 배열에 담�
 	rabbitY = 250,
 	rabbitIndex = 0;
 
+//배경 이미지 로딩하기
 var backImg = new Image();
 backImg.src = 'images/background.jpg';
 
+//조준선 이미지 로딩하기
 var snipeImg = new Image();
 snipeImg.src = 'images/snipe.png';
 var snipeX = 100,
     snipeY = 100;
 
+//총알구멍 이미지 로딩하기
 var holeImg = new Image();
 holeImg.src = 'images/hole.png';
 var holesArr = [];  //총알구멍들을 여기다가 계속 담을것임(push)
 var holeObj = {};
+
+var b0 = new Image();
+var b1 = new Image();
+var b2 = new Image();
+var b3 = new Image();
+var b4 = new Image();
+var b5 = new Image();
+b0.src = 'images/b0.png';
+b1.src = 'images/b1.png';
+b2.src = 'images/b2.png';
+b3.src = 'images/b3.png';
+b4.src = 'images/b4.png';
+b5.src = 'images/b5.png';
+var bubbleImgs = [b0, b1, b2, b3, b4, b5];
+var bubbles = [];  //풍선 객체를 저장할 배열
+
+
+//=====================================================================================
 
 var count = 0;
 var rabbitAnimation = function() {
@@ -56,7 +77,7 @@ var rabbitAnimation = function() {
 		//count를 10으로 나눴을때 0이 아니면 (즉, 10의배수가 아니면)
 		return;
 	}
-	console.log(count);
+	//console.log(count);
 	rabbitIndex++;  //다음 이미지로 변경
 	if (rabbitIndex === 2) {  //존재하지 않는 인덱스라면
 		rabbitIndex = 0;  //처음 인덱스로 변경
@@ -72,24 +93,48 @@ var scoreUp = function () {
 	point++;
 	score.innerHTML = scoreNum;
 };
+var makeBubble = function() {
+	for (var i=0; i<10; i++) {
+		var obj = {
+			x: rabbitX,
+			y: rabbitY,
+			type: (Math.random() * 6),  //색깔이 랜덤하게 선택되도록 함
+			speedX : (Math.random() * 41) - 20,
+			speedY : (Math.random() * 41) - 20
+		};
+		bubbles.push(obj);  //풍선정보를 배열에 담는다.
+	}
+	for (var index in bubbles) {
+		var tmp = bubbles[index];
+		context.drawImage(bubbleImgs[tmp.type], tmp.x-25, tmp.y-25, 50, 50);
+	}
+};
+var moveBubble = function() {
+	for (var index in bubbles) {
+		var tmp = bubbles[index];
+		tmp.x += tmp.speedX;
+		tmp.y += tmp.speedY;
+	}
+};
 var banAnimation = function () {
 	if (isReload) {
 		return;
 	}
-	snipeY++;
-	if(snipeY <= 0) {
-		snipeY = 0;
+	banDongY += 1;
+	if(banDongY <= 0) {
+		banDongY = 0;
 		isReload = true;
 		new Audio('sounds/jang.wav').play();
 	}
 };
 var banDong = function(mouseY) {
-	snipeY -= 50;
+	banDongY -= 50;
 };
 $('#myCanvas').on('mousedown', function(event) {
 	if (isReload === false) {  //장전이 되지않았으면 총이 발사가 안됨.
 		return;
 	}
+	isReload = true;  //총알 소모됨
 	new Audio('sounds/fire.wav').play();
 	var isShoot = rabbitX-50 < snipeX && snipeX < rabbitX+50
 				&& rabbitY-50 < snipeY && snipeY < rabbitY+50
@@ -97,11 +142,12 @@ $('#myCanvas').on('mousedown', function(event) {
 		new Audio('sounds/birddie.mp3').play();
 		rabbitMove();
 		scoreUp();
+		makeBubble();
 	}
 	holeObj = {x: event.offsetX, y: event.offsetY};
 	holesArr.push(holeObj);
 	//반동 추가
-	banDong(event.offsetY);
+	banDong();
 });
 
 //=====================================================================================
@@ -119,13 +165,16 @@ var drawScreen = function() {
 	currentTime.innerHTML = new Date().getSeconds();
 	//토끼이미지 그리기
 	context.drawImage(rabbitImgs[rabbitIndex], rabbitX-50, rabbitY-50, 100, 100);  //이미지는 좌상단 좌표가 기준
+	//풍선 이미지 그리기
 	//스나이프 이미지 그리기
-	context.drawImage(snipeImg, snipeX-50, snipeY-50, 100, 100)
+	context.drawImage(snipeImg, snipeX-50, snipeY-banDongY-50, 100, 100)
 	//점수 출력하기
 	context.fillText('점수 : '+point, 10, 40);
+	//총 반동 애니메이션
+	banAnimation();
 
 	rabbitAnimation();
-	banAnimation();
+	moveBubble();
 };
 setInterval(drawScreen, 1000/20);  //drawScreen 함수를 20 Frame으로 호출!
 
@@ -134,3 +183,14 @@ $('#myCanvas').on('mousemove', function(event) {
 	snipeY = event.offsetY;
 });
 </script>
+
+
+<!-- 지금
+     1. 리로드되는 부분,
+     2. 풍선나오는것, 
+     3. 풍선 움직이는 로직
+     4. 풍선이 삭제되는 로직
+     을 완전하게 만들어야함.
+
+     추가로 풍선이 내부적으로 돌아가게 만드는것도 해보면 좋을듯
+     힌트 : 벽에 닿으면 스피드x, 스피드y의 부호를 바꿔준다. -->

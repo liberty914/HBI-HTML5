@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Example_Canvas.html</title>
+</head>
+<body>
+<canvas id="myCanvas" width="800" height="500"></canvas>
+<script src="js/jquery-2.1.4.js"></script>
+<script>
+	var canvas=document.getElementById("myCanvas");
+	var context=canvas.getContext("2d");
+	//글자를 출력하기 위한 준비 작업
+	context.font="30px sans-serif";
+	context.fillStyle="yellow";
+
+	//배경이미지 로딩하기
+	var backImg=new Image();
+	backImg.src="images/background.jpg";
+	//토끼이미지 로딩하기
+	var rabbitImg=new Image();
+	var rabbitImg2=new Image();
+	rabbitImg.src="images/rabbit_1.png";
+	rabbitImg2.src="images/rabbit2.png";
+	//이미지 객체를 배열에 담아 놓기
+	var rabbitImgs=[rabbitImg, rabbitImg2];
+	//스나이프 이미지
+	var snipeImg=new Image();
+	snipeImg.src="images/snipe.png";
+	//스나이프의 초기 좌표
+	var snipeX=0;
+	var snipeY=0; 
+
+	//총알 구멍 이미지
+	var holeImg=new Image();
+	holeImg.src="images/hole.png";
+
+	//총알 구멍의 좌표를 누적할 배열
+	var holes=[];
+
+	var b0=new Image();
+	var b1=new Image();
+	var b2=new Image();
+	var b3=new Image();
+	var b4=new Image();
+	var b5=new Image();
+
+	b0.src="images/b0.png";
+	b1.src="images/b1.png";
+	b2.src="images/b2.png";
+	b3.src="images/b3.png";
+	b4.src="images/b4.png";
+	b5.src="images/b5.png";
+
+	var bubbleImgs=[b0, b1, b2, b3, b4, b5];
+
+	//풍선 객체를 저장할 배열
+	var bubbles=[];
+
+	//토끼의 초기 위치
+	var rabbitX=400, rabbitY=250;
+	//토끼의 이미지 인덱스 
+	var rabbitIndex=0; 
+
+	//효과음 로딩하기
+	var fireSound=new Audio("sounds/fire.wav");
+	var screamSound=new Audio("sounds/birddie.mp3");
+	var jangSound=new Audio("sounds/jang.wav");
+	//토끼를 맞춘 횟수 
+	var point=0;
+	//반동값을 저장할 변수
+	var banY=0;
+	//총의 장전 여부를 저장할 변수
+	var isJanged=true;
+
+	//화면이 주기적으로 다시 그려지는 구조로 만든다.
+	// 50/1000 초마다 drawScreen 함수를 주기적으로 호출!
+	setInterval(drawScreen, 50);
+
+	//카운트를 셀변수
+	var count=0;
+	//canvas 에 랜더링하는 함수 
+	function drawScreen(){
+		count++;//카운트 증가 시키기 
+		//console.log(count);
+		//배경이미지 그리기 
+		context.drawImage(backImg, 0, 0, 800, 500);
+		//배열에 저장된 모든 객체를 하나씩 불러와서 총알 구멍 그리기
+		for(var i in holes){
+			//i번째 총알 구멍 객체를 얻어온다. 
+			var tmp = holes[i]; 
+			context.drawImage(holeImg, tmp.x-10, tmp.y-10, 20, 20);
+		}
+
+		//토끼 이미지 그리기
+		context.drawImage(rabbitImgs[rabbitIndex], rabbitX-50, rabbitY-50, 100, 100);
+		
+		//풍선 이미지 그리기
+		for(var i in bubbles){
+			var tmp=bubbles[i];
+			context.drawImage(bubbleImgs[tmp.type], tmp.x-25, tmp.y-25, 50, 50);
+		}
+
+		//스나이프 이미지 그리기
+		context.drawImage(snipeImg, snipeX-50, snipeY-banY-50, 100, 100);
+		//점수 출력하기
+		context.fillText("점수:"+point, 10, 40);
+		rabbitAnimation();
+		banAnimation();
+		moveBubble();
+		checkBubble();
+	}//drawScreen()
+
+	//제거할 풍선은 제거하는 함수 
+	function checkBubble(){
+		//bubbles 배열의 방의 갯수 만큼 반복문 돌기 
+		for(var i=0; i<bubbles.length; i++){
+			//i번째 풍선 객체를 얻어온다. 
+			var tmp=bubbles[i];
+			if(tmp.isRemove){//제거 해야한다면
+				//배열에서 i번째 풍선 객체를 제거한다.
+				bubbles.splice(i, 1);
+			}
+		}
+	}
+
+	//풍선 움직이는 함수
+	function moveBubble(){
+		for(var i in bubbles){
+			var tmp=bubbles[i];
+			tmp.x = tmp.x + tmp.speedX;
+			tmp.y = tmp.y + tmp.speedY;
+			//화면을 벗어 낫는지 확인해서 
+			if(tmp.x < -25 || tmp.x > 825 || tmp.y < -25 || tmp.y > 525){
+				//isRemove 값을 true 로 설정 
+				tmp.isRemove=true;
+			}
+		}
+	}
+
+	function banAnimation(){
+		if(isJanged)return;
+		banY = banY-5;
+		if(banY<=0){
+			banY=0;
+			isJanged=true;//장전 상태 바꾸기 
+			jangSound.currentTime=0;
+			jangSound.play();//장전소리 재생 
+		}
+	}
+
+	function rabbitAnimation(){
+		if(count%5 != 0){
+			return;//함수 종료 
+		}
+		rabbitIndex++; //1 증가시키기
+		if(rabbitIndex==2){ //존재하지 않는 인덱스라면 
+			rabbitIndex=0;//처음 인덱스로 바꾸기 
+		}
+	}
+	//mousemove 이벤트 처리 
+	$("#myCanvas").mousemove(function(event){
+		//마우스의 좌표를 snipe 의 좌표에 반영한다. 
+		snipeX=event.offsetX;
+		snipeY=event.offsetY;
+	});
+
+	$("#myCanvas").mousedown(function(event){
+		//장전 여부를 확인해서 
+		if(isJanged==false){ //장전되지 않았다면 
+			return; //함수 종료 
+		}
+
+		banY=50;//반동을 주고 
+		isJanged=false;//장전 상태를 false 로 
+
+		//총소리 재생
+		fireSound.currentTime=0;
+		fireSound.play();
+		//이벤트가 일어난 곳의 좌표
+		var eventX=event.offsetX;
+		var eventY=event.offsetY;
+		//토끼가 총에 맞았는지 boolean type 으로 얻어낸다.
+		var isShooted = eventX > rabbitX-50 &&
+					eventX < rabbitX+50 &&
+					eventY > rabbitY-50 &&
+					eventY < rabbitY+50 ;
+		if(isShooted){
+			//점수 증가 시키기 
+			point++;
+			//여기가 수행되면 토끼가 총에 맞은 것이다.
+			screamSound.currentTime=0;
+			screamSound.play();
+			//풍선을 만든다.
+			makeBubble();
+
+			//토끼의 좌표를 렌덤하게 이동하기
+			rabbitX=parseInt(Math.random()*800);
+			rabbitY=parseInt(Math.random()*500); 
+
+		}
+		//총알 구멍 관련 처리
+		var obj={x:eventX, y:eventY};
+		holes.push(obj);//배열에 누적 시키기 
+	});
+
+	function makeBubble(){
+		for(var i=0; i<10; i++){
+			var obj={};
+			obj.x=rabbitX;
+			obj.y=rabbitY;
+			obj.type=parseInt(Math.random()*6);
+			obj.speedX=parseInt(Math.random()*41)-20;
+			obj.speedY=parseInt(Math.random()*41)-20;
+			obj.isRemove=false;
+			//풍선 정보를 배열에 담는다. 
+			bubbles.push(obj);
+		}
+	}
+</script>	
+</body>
+</html>
