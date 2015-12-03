@@ -71,8 +71,30 @@
 		-webkit-animation: rotateAni 2s infinite linear; /*alternate*/
 	}
 	
-	/* 키프레임 애니메이션 정의하기 (변수에 담는다고 생각하면 됨) */
+	/* 키프레임 애니메이션 정의하기 (함수를 정의한다고 생각하면 됨) */
 	@-webkit-keyframes rotateAni{
+		/*  x축 기준 회전  
+		0%{
+			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(0deg);
+		}
+		50%{
+			-webkit-transform: translateZ(-200px) rotateX(360deg) rotateY(0deg);
+		}
+		100%{
+			-webkit-transform: translateZ(-200px) rotateX(720deg) rotateY(0deg);
+		}
+		*/
+		/*  y축 기준 회전  */
+		0%{
+			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(0deg);
+		}
+		50%{
+			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(360deg);
+		}
+		100%{
+			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(720deg);
+		}
+		/*  x, y 전체 회전  
 		0%{
 			-webkit-transform: translateZ(-200px) rotateX(0deg) rotateY(0deg);
 		}
@@ -82,6 +104,7 @@
 		100%{
 			-webkit-transform: translateZ(-200px) rotateX(720deg) rotateY(720deg);
 		}
+		*/
 	}
 
 	</style>

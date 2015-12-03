@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate.css</title>
+</head>
+<body>
+	<div class='container'>
+		<h3>Animate.css 테스트</h3>
+		<form id='custom' class='animated fadeInRight'>
+			<label>아이디 : <input type='text' name='id' id='id' /></label><br/>
+			<label>비밀번호 : <input type='password' name='pwd' id='pwd' /></label><br/>
+			<button type='submit'>로그인</button>
+		</form>
+	</div>
+</body>
+</html>
+
+<style>
+.container { width: 980px; margin: 0 auto; }
+/*#custom { -webkit-animation-duration: 1s;
+-o-animation-duration: 1s;
+-ms-animation-duration: 1s;
+-moz-animation-duration: 1s;
+animation-duration: 1s; }*/
+</style>
+<link rel='stylesheet' href='css/animate.css' />
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+$('#id, #pwd').focus(function() {
+	$(this).addClass('animated tada');
+});
+$('#id, #pwd').on('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function() {
+	$(this).removeClass('animated tada');
+});
+
+$('input[type=submit]').on('mouseover', function() {
+	$(this).addClass('animated tada');
+});
+</script>

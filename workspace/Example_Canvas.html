@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas</title>
+</head>
+<body>
+	<canvas id='myCanvas' width='800' height='500'></canvas>
+	<h1></h1>
+	<h1></h1>
+</body>
+</html>
+
+<script src='js/jquery-2.1.4.js'></script>
+<script>
+var canvas = document.getElementById('myCanvas'),
+	context = canvas.getContext('2d'),
+	currentTime = document.getElementsByTagName('h1')[0],
+	score = document.getElementsByTagName('h1')[1];
+	scoreNum = 0,  //점수
+	point = 0,  //점수
+	banDongY = 0,  //반동값을 저장할 변수
+	isReload = true;  //총의 장전 여부를 저장할 변수
+
+context.font = '30px sans-serif';
+context.fillStyle='yellow';
+
+//토끼 이미지 로딩하기
+var rabbitImg = new Image();
+var rabbitImg2 = new Image();
+rabbitImg.src = 'images/rabbit_1.png';
+rabbitImg2.src = 'images/rabbit2.png';
+
+var rabbitImgs = [rabbitImg, rabbitImg2],  //이미지 객체를 배열에 담아놓기
+	rabbitX = 400,
+	rabbitY = 250,
+	rabbitIndex = 0;
+
+var backImg = new Image();
+backImg.src = 'images/background.jpg';
+
+var snipeImg = new Image();
+snipeImg.src = 'images/snipe.png';
+var snipeX = 100,
+    snipeY = 100;
+
+var holeImg = new Image();
+holeImg.src = 'images/hole.png';
+var holesArr = [];  //총알구멍들을 여기다가 계속 담을것임(push)
+var holeObj = {};
+
+var count = 0;
+var rabbitAnimation = function() {
+	count++;
+	if (count % 10 != 0) {
+		//count를 10으로 나눴을때 0이 아니면 (즉, 10의배수가 아니면)
+		return;
+	}
+	console.log(count);
+	rabbitIndex++;  //다음 이미지로 변경
+	if (rabbitIndex === 2) {  //존재하지 않는 인덱스라면
+		rabbitIndex = 0;  //처음 인덱스로 변경
+	}
+};
+
+var rabbitMove = function () {
+	rabbitX = (Math.random() * 800) + 1;
+	rabbitY = (Math.random() * 500) + 1;
+};
+var scoreUp = function () {
+	scoreNum++;
+	point++;
+	score.innerHTML = scoreNum;
+};
+var banAnimation = function () {
+	if (isReload) {
+		return;
+	}
+	snipeY++;
+	if(snipeY <= 0) {
+		snipeY = 0;
+		isReload = true;
+		new Audio('sounds/jang.wav').play();
+	}
+};
+var banDong = function(mouseY) {
+	snipeY -= 50;
+};
+$('#myCanvas').on('mousedown', function(event) {
+	if (isReload === false) {  //장전이 되지않았으면 총이 발사가 안됨.
+		return;
+	}
+	new Audio('sounds/fire.wav').play();
+	var isShoot = rabbitX-50 < snipeX && snipeX < rabbitX+50
+				&& rabbitY-50 < snipeY && snipeY < rabbitY+50
+	if (isShoot) {
+		new Audio('sounds/birddie.mp3').play();
+		rabbitMove();
+		scoreUp();
+	}
+	holeObj = {x: event.offsetX, y: event.offsetY};
+	holesArr.push(holeObj);
+	//반동 추가
+	banDong(event.offsetY);
+});
+
+//=====================================================================================
+
+//화면이 주기적으로 다시 그려지는 구조로 만든다.
+var drawScreen = function() {
+	//배경이미지 그리기
+	context.drawImage(backImg, 0, 0, 800, 500);
+	//배열에 저장된 모든 객체를 하나씩 불러와서 총알 구멍 그리기
+	for (var index in holesArr) {
+		var hole = holesArr[index];
+		context.drawImage(holeImg, hole.x-10, hole.y-10, 20, 20);
+	}
+	//시간 나타내기
+	currentTime.innerHTML = new Date().getSeconds();
+	//토끼이미지 그리기
+	context.drawImage(rabbitImgs[rabbitIndex], rabbitX-50, rabbitY-50, 100, 100);  //이미지는 좌상단 좌표가 기준
+	//스나이프 이미지 그리기
+	context.drawImage(snipeImg, snipeX-50, snipeY-50, 100, 100)
+	//점수 출력하기
+	context.fillText('점수 : '+point, 10, 40);
+
+	rabbitAnimation();
+	banAnimation();
+};
+setInterval(drawScreen, 1000/20);  //drawScreen 함수를 20 Frame으로 호출!
+
+$('#myCanvas').on('mousemove', function(event) {
+	snipeX = event.offsetX;
+	snipeY = event.offsetY;
+});
+</script>
